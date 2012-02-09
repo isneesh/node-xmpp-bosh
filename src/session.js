@@ -969,8 +969,8 @@ Session.prototype = {
 
     enqueue_report_if_reqd: function (node) {
         // Client has not acknowledged the receipt of the last message we sent it.
-        if (node.attrs.ack < this.max_rid_sent && this.unacked_responses[node.attrs.ack + 1]) {
-            var _ts = this.unacked_responses[node.attrs.ack + 1].ts;
+        if (node.attrs.ack < this.max_rid_sent && this.unacked_responses[node.attrs.ack]) {
+            var _ts = this.unacked_responses[node.attrs.ack].ts;
             var stream = this._get_random_stream();
             if (!stream) {
                 log.error("%s enqueue_report_if_reqd - couldnt get random stream", this.sid);
